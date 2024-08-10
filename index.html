@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wasm vs JS Fibonacci</title>
+  </head>
+  <body>
+    <h1>Calculating 40th Fibonacci Number</h1>
+    <button id="run-js">Run JavaScript</button>
+    <button id="run-wasm">Run WebAssembly</button>
+    <p id="js-time"></p>
+    <p id="wasm-time"></p>
+
+    <script type="module">
+      import init, { fibonacci } from './pkg/wasm_counter.js';
+
+      document.getElementById('run-js').onclick = () => {
+        const start = performance.now();
+        const result = fibonacciJS(40);
+        const end = performance.now();
+        document.getElementById('js-time').textContent = `JavaScript: ${
+          end - start
+        } ms (Result: ${result})`;
+      };
+
+      document.getElementById('run-wasm').onclick = async () => {
+        await init();
+        const start = performance.now();
+        const result = fibonacci(40);
+        const end = performance.now();
+        document.getElementById('wasm-time').textContent = `WebAssembly: ${
+          end - start
+        } ms (Result: ${result})`;
+      };
+
+      function fibonacciJS(n) {
+        if (n <= 1) return n;
+        return fibonacciJS(n - 1) + fibonacciJS(n - 2);
+      }
+    </script>
+  </body>
+</html>
