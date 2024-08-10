@@ -81,7 +81,7 @@ Here's a brief overview of the project structure:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/yourrepository.git
+   git clone https://github.com/ministerko/wasm_counter.git
    cd yourrepository
    ```
 
