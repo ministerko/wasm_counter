@@ -82,7 +82,7 @@ Here's a brief overview of the project structure:
 
    ```bash
    git clone https://github.com/ministerko/wasm_counter.git
-   cd yourrepository
+   cd wasm_counte
    ```
 
 2. **Install Dependencies**
